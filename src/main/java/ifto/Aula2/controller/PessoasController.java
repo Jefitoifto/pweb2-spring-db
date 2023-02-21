@@ -30,14 +30,14 @@ public class PessoasController {
 
     @GetMapping("/form")
     public String form(Pessoa pessoa) {
-        return "/pessoas/form";
+        return "/pessoa/form";
 
     }
 
     @PostMapping("/save")
     public ModelAndView save(Pessoa pessoa) {
         pessoaDAO.save(pessoa);
-        return new ModelAndView("redirect:/pessoas/list");
+        return new ModelAndView("redirect:/pessoa/list");
     }
 
     @GetMapping("/remove/{id}")
@@ -49,7 +49,7 @@ public class PessoasController {
     @GetMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("pessoa", pessoaDAO.buscarPessoa(id));
-        return new ModelAndView("/pessoas/list", model);
+        return new ModelAndView("/pessoa/list", model);
     }
 
     @PostMapping("/update")
